@@ -3,6 +3,7 @@ class Node:
 		self.previous = None
 		self.value = value
 		self.next = None
+		self.count = 1
 
 class Root:
 	def __init__(self, value):
@@ -10,40 +11,35 @@ class Root:
 		self.current = self.root
 		self.length = 1
 		
-	def insert(self, where, value):
+	def push(self, value):
 		new = Node(value.upper())
 		i = 1
 		
-		if self.length == 1:
-			new.next = self.root
-			new.previous = self.root
-			
-			self.root.next = new
-			self.root.previous = new
-			
-			self.length += 1 
-			return True
-		
 		for node in self:
-			if node.value == where.upper():
-				new.next = node.next
-				new.previous = node
-				
-				node.next.previous = new
-				node.next = new
-				
-				self.length += 1 
+			if node.value == value.upper():
+				node.count += 1
 				return True
 				
-			elif self.length == i:
-				new.previous = node
-				new.next = self.root
+			else:
+				if self.length == 1:
+					new.next = self.root
+					new.previous = self.root
+					
+					self.root.next = new
+					self.root.previous = new
+					
+					self.length += 1 
+					return True
+		
+				if self.length == i:
+					new.previous = node
+					new.next = self.root
 				
-				node.next = new
-				self.root.previous = new
-				
-				self.length += 1 
-				return True
+					node.next = new
+					self.root.previous = new
+					
+					self.length += 1 
+					return True
 				
 			i += 1
 				
