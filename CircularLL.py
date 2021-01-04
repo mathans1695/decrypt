@@ -12,7 +12,6 @@ class Root:
 		self.length = 1
 		
 	def push(self, value):
-		new = Node(value.upper())
 		i = 1
 		
 		for node in self:
@@ -22,6 +21,7 @@ class Root:
 				
 			else:
 				if self.length == 1:
+					new = Node(value.upper())
 					new.next = self.root
 					new.previous = self.root
 					
@@ -32,6 +32,7 @@ class Root:
 					return True
 		
 				if self.length == i:
+					new = Node(value.upper())
 					new.previous = node
 					new.next = self.root
 				
@@ -48,6 +49,9 @@ class Root:
 		
 	def move_backward(self, node):
 		return Backward_iterator(node, self.length)
+		
+	def __len__(self):
+		return self.length
 				
 	def __iter__(self):
 		return LinkedList_iterator(self.root, self.length);

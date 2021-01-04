@@ -1,15 +1,7 @@
-from LettersClock import letters_clock as lc
-from LettersClock import letters
+from LettersClock import letters, letters_clock as lc
 from BinarySearch import find_index
-
-emblem = {
-	'SPACE': 'Gorilla',
-	'LAND': 'Panda',
-	'WATER': 'Octopus',
-	'ICE': 'Mammoth',
-	'AIR': 'Owl',
-	'FIRE': 'Dragon'
-}
+from emblem import emblem
+from CircularLL import Root
 
 def forward_or_backward(letter, pos):
 	index = find_index(letters, letter)
@@ -33,6 +25,7 @@ def decrypt(planet, message):
 	pos = 0
 	move_from = lc.root
 	result = ''
+	desiredLL = None
 	
 	for letter in message:
 		if pos < 0:
@@ -46,6 +39,11 @@ def decrypt(planet, message):
 					desired = move_backward_by(node, move_by)
 					result += desired.value
 					
+					try:
+						desiredLL.push(desired.value)
+					except AttributeError:
+						desiredLL = Root(desired.value)
+					
 					pos -= move_by
 					move_from = desired
 					break
@@ -58,6 +56,11 @@ def decrypt(planet, message):
 					desired = move_backward_by(node, move_by)
 					result += desired.value
 					
+					try:
+						desiredLL.push(desired.value)
+					except AttributeError:
+						desiredLL = Root(desired.value)
+					
 					pos -= move_by
 					move_from = desired
 					break
@@ -67,5 +70,10 @@ def decrypt(planet, message):
 		else:
 			desired = move_backward_by(move_from, move_by)
 			result += desired.value
+			
+			try:
+				desiredLL.push(desired.value)
+			except AttributeError:
+				desiredLL = Root(desired.value)
 	
-	return result
+	return [result, desiredLL]

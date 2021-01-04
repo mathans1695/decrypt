@@ -1,6 +1,8 @@
 from CircularLL import Root	
 		   
-letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZAA'
+letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 
+		   'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
+		   'Y', 'Z']
 
 letters_clock = Root(letters[0])
 
