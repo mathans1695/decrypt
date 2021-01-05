@@ -30,7 +30,7 @@ def main():
 	output = ''
 	possible_no_of_alliance = 0
 	
-	# splits the input
+	# splits the input and iterate
 	for splitted in [j.split(' ') for j in inp.split('\n')]:
 		kingdom, message = splitted[0], splitted[1]
 		
