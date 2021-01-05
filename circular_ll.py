@@ -1,4 +1,5 @@
 class Node:
+	""" Creates single node """
 	def __init__(self, value):
 		self.previous = None
 		self.value = value
@@ -12,8 +13,14 @@ class Root:
 		self.length = 1
 		
 	def push(self, value):
+		""" 
+			Create new node with value and push the node at the end, if linkedlist doesn't have one
+			Or update the count property of node having the value passed as params
+		"""
+		
 		i = 1
 		
+		# iterate through linkedlist and create new node or update count property
 		for node in self:
 			if node.value == value.upper():
 				node.count += 1
@@ -45,18 +52,29 @@ class Root:
 			i += 1
 				
 	def	move_forward(self, node):
-		return Forward_iterator(node, self.length)
+		""" 
+			Returns ForwardIterator
+			Pass - Current node and length of linkedlist
+		"""
+		return ForwardIterator(node, self.length)
 		
 	def move_backward(self, node):
-		return Backward_iterator(node, self.length)
+		""" 
+			Returns BackwardIterator
+			Pass - Current node and length of linkedlist
+		"""
+		return BackwardIterator(node, self.length)
+		
+	def __iter__(self):
+		""" Returns LinkedListIterator iterator """
+		return LinkedListIterator(self.root, self.length)
 		
 	def __len__(self):
 		return self.length
-				
-	def __iter__(self):
-		return LinkedList_iterator(self.root, self.length);
 			
-class LinkedList_iterator:
+class LinkedListIterator:
+	""" Start clockwise iteration from root node """
+	
 	def __init__(self, root, length):
 		self.current = root
 		self.length = length
@@ -73,7 +91,9 @@ class LinkedList_iterator:
 		else:
 			raise StopIteration
 
-class Forward_iterator:
+class ForwardIterator:
+	""" Perform clockwise iteration from passed node """
+	
 	def __init__(self, root, length):
 		self.current = root
 		self.length = length
@@ -90,7 +110,9 @@ class Forward_iterator:
 		else:
 			raise StopIteration
 
-class Backward_iterator:
+class BackwardIterator:
+	""" Perform anticlockwise iteration from passed node """
+	
 	def __init__(self, root, length):
 		self.current = root
 		self.length = length
