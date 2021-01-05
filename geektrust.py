@@ -1,4 +1,4 @@
-from Decrypt import decrypt
+from decrypt import decrypt
 from emblem import expected
 import sys
 

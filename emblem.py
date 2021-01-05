@@ -1,4 +1,4 @@
-from CircularLL import Root
+from circular_ll import Root
 
 emblem = {
 	'SPACE': 'Gorilla',

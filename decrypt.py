@@ -1,7 +1,7 @@
-from LettersClock import letters, letters_clock as lc
-from BinarySearch import find_index
+from letters_clock import letters, letters_clock as lc
+from binary_search import find_index
 from emblem import emblem
-from CircularLL import Root
+from circular_ll import Root
 
 output = {
 	'SPACE': {},

@@ -1,4 +1,4 @@
-from LettersClock import letters
+from letters_clock import letters
 
 def binary_search(arr, value):
 	length = len(arr)
