@@ -9,15 +9,21 @@ emblem = {
 	'FIRE': 'Dragon'
 }
 
-expected = {}
+expected = {
+	'SPACE': {},
+	'LAND': {},
+	'WATER': {},
+	'ICE': {},
+	'AIR': {},
+	'FIRE': {}
+}
 
-def generate_expected_result(key, value):
-	letters_list = Root(value[0])
-	
-	for i in range(1, len(value)):
-		letters_list.push(value[i])
-		
-	expected[key] = letters_list
+def generate_expected_result(planet, symbol):
+	for letter in symbol:
+		try:
+			expected[planet][letter.upper()] += 1
+		except KeyError:
+			expected[planet][letter.upper()] = 1
 	
 for key in emblem:
 	generate_expected_result(key, emblem[key])

@@ -3,6 +3,15 @@ from BinarySearch import find_index
 from emblem import emblem
 from CircularLL import Root
 
+output = {
+	'SPACE': {},
+	'LAND': {},
+	'WATER': {},
+	'ICE': {},
+	'AIR': {},
+	'FIRE': {}
+}
+
 def forward_or_backward(letter, pos):
 	index = find_index(letters, letter)
 	if index > pos:
@@ -25,7 +34,6 @@ def decrypt(planet, message):
 	pos = 0
 	move_from = lc.root
 	result = ''
-	desiredLL = None
 	
 	for letter in message:
 		if pos < 0:
@@ -40,9 +48,9 @@ def decrypt(planet, message):
 					result += desired.value
 					
 					try:
-						desiredLL.push(desired.value)
-					except AttributeError:
-						desiredLL = Root(desired.value)
+						output[planet][desired.value] += 1
+					except KeyError:
+						output[planet][desired.value] = 1
 					
 					pos -= move_by
 					move_from = desired
@@ -57,9 +65,9 @@ def decrypt(planet, message):
 					result += desired.value
 					
 					try:
-						desiredLL.push(desired.value)
-					except AttributeError:
-						desiredLL = Root(desired.value)
+						output[planet][desired.value] += 1
+					except KeyError:
+						output[planet][desired.value] = 1
 					
 					pos -= move_by
 					move_from = desired
@@ -72,8 +80,8 @@ def decrypt(planet, message):
 			result += desired.value
 			
 			try:
-				desiredLL.push(desired.value)
-			except AttributeError:
-				desiredLL = Root(desired.value)
+				output[planet][desired.value] += 1
+			except KeyError:
+				output[planet][desired.value] = 1
 	
-	return [result, desiredLL]
+	return [result, output]
