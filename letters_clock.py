@@ -1,4 +1,9 @@
-from circular_ll import Root	
+from circular_ll import Root
+
+"""
+This module creates letters clock using circular linked list.
+You can go clockwise and anticlockwise on letters clock.
+"""	
 		   
 letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 
 		   'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
