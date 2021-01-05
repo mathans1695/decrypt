@@ -9,6 +9,7 @@ emblem = {
 	'FIRE': 'Dragon'
 }
 
+# expected will contain number of occurrences of letters in emblem for each kingdom
 expected = {
 	'SPACE': {},
 	'LAND': {},
@@ -18,12 +19,16 @@ expected = {
 	'FIRE': {}
 }
 
-def generate_expected_result(planet, symbol):
-	for letter in symbol:
+def generate_expected_result(kindom, emblem):
+	"""
+		updates expected with number of occurences of letters in emblem
+		@params - kindom, corresponding emblem
+	"""
+	for letter in emblem:
 		try:
-			expected[planet][letter.upper()] += 1
+			expected[kindom][letter.upper()] += 1
 		except KeyError:
-			expected[planet][letter.upper()] = 1
+			expected[kindom][letter.upper()] = 1
 	
 for key in emblem:
 	generate_expected_result(key, emblem[key])
