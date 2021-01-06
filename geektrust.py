@@ -56,7 +56,7 @@ def main():
 	else:
 		output = 'NONE'
 	
-	output.strip()
+	return output.strip()
 
 if __name__ == "__main__":
 	print(main())
