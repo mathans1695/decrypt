@@ -23,6 +23,7 @@
   - Both file provide required data to solve the problem
   
 ### Tests:
+- Run each test using *python <filename>*
 - Tests were provided for every modules, expect 'emblem' and 'letters_clock'
 - success_data and failure_data files were added to test whole app
 - You have to run test files individually, I will add automation to it soon
