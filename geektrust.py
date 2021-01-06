@@ -46,8 +46,9 @@ def main():
 		
 		# increment alliance and concat the kingdom to output string
 		if compare_with_expected(kingdom, decrypted_dict):
-			output += splitted[0] + ' '
-			possible_no_of_alliance += 1
+			if kingdom not in output:
+				output += kingdom + ' '
+				possible_no_of_alliance += 1
 	
 	# if king atleast have three alliance, concatenate space to output in front
 	if possible_no_of_alliance >= 3:
